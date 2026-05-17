@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SXR ADMIN PANEL</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#050505;
+color:white;
+display:flex;
+overflow-x:hidden;
+}
+
+body::before{
+content:'';
+position:fixed;
+width:400px;
+height:400px;
+background:#ff0055;
+filter:blur(180px);
+opacity:.15;
+top:-100px;
+right:-100px;
+z-index:-1;
+}
+
+.sidebar{
+width:240px;
+height:100vh;
+background:linear-gradient(180deg,#0d0d0d,#111);
+padding:20px;
+position:fixed;
+left:0;
+top:0;
+border-right:1px solid rgba(255,255,255,0.05);
+}
+
+.logo{
+font-size:24px;
+font-weight:700;
+color:#ff0055;
+text-align:center;
+margin-bottom:35px;
+text-shadow:0 0 15px #ff0055;
+}
+
+.menu a{
+display:flex;
+align-items:center;
+padding:14px;
+margin-top:10px;
+border-radius:12px;
+text-decoration:none;
+color:#ccc;
+transition:0.3s;
+background:rgba(255,255,255,0.03);
+}
+
+.menu a:hover,
+.menu a.active{
+background:#ff0055;
+color:white;
+transform:translateX(5px);
+box-shadow:0 0 15px #ff0055;
+}
+
+.main{
+margin-left:240px;
+width:100%;
+padding:20px;
+}
+
+.topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+}
+
+.title h1{
+font-size:28px;
+color:#ff0055;
+}
+
+.title p{
+color:#888;
+font-size:13px;
+}
+
+.admin-box{
+background:#111;
+padding:10px 15px;
+border-radius:12px;
+box-shadow:0 0 10px rgba(255,0,85,0.2);
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:18px;
+}
+
+.card{
+background:linear-gradient(145deg,#111,#161616);
+padding:22px;
+border-radius:18px;
+position:relative;
+overflow:hidden;
+transition:0.3s;
+border:1px solid rgba(255,255,255,0.03);
+}
+
+.card:hover{
+transform:translateY(-5px);
+box-shadow:0 0 20px rgba(255,0,85,0.4);
+}
+
+.card::before{
+content:'';
+position:absolute;
+width:120px;
+height:120px;
+background:#ff0055;
+border-radius:50%;
+top:-40px;
+right:-40px;
+opacity:0.15;
+}
+
+.card .icon{
+font-size:28px;
+}
+
+.card h2{
+font-size:30px;
+color:#ff0055;
+margin-top:10px;
+}
+
+.card p{
+margin-top:8px;
+color:#999;
+}
+
+.section{
+margin-top:25px;
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:20px;
+}
+
+.panel{
+background:#111;
+padding:20px;
+border-radius:18px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:15px;
+}
+
+table th{
+text-align:left;
+padding:12px;
+color:#ff0055;
+font-size:14px;
+}
+
+table td{
+padding:12px;
+border-top:1px solid rgba(255,255,255,0.05);
+color:#bbb;
+font-size:13px;
+}
+
+.badge-online{
+background:rgba(0,255,153,.15);
+color:#00ff99;
+padding:5px 10px;
+border-radius:20px;
+font-size:12px;
+}
+
+.badge-offline{
+background:rgba(255,255,255,.08);
+color:#aaa;
+padding:5px 10px;
+border-radius:20px;
+font-size:12px;
+}
+
+.badge-banned{
+background:rgba(255,0,0,.15);
+color:#ff4d4d;
+padding:5px 10px;
+border-radius:20px;
+font-size:12px;
+}
+
+button{
+width:100%;
+padding:12px;
+border:none;
+border-radius:12px;
+margin-top:12px;
+background:linear-gradient(45deg,#ff0055,#ff3d7a);
+color:white;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+box-shadow:0 0 15px #ff0055;
+}
+
+.btn-ban{
+background:red;
+margin-top:0;
+}
+
+.btn-delete{
+background:#444;
+margin-top:6px;
+}
+
+input, select{
+width:100%;
+padding:12px;
+border:none;
+border-radius:12px;
+margin-top:10px;
+background:#1b1b1b;
+color:white;
+}
+
+#toast{
+position:fixed;
+bottom:25px;
+right:25px;
+background:#ff0055;
+color:white;
+padding:14px 20px;
+border-radius:12px;
+opacity:0;
+transition:.3s;
+box-shadow:0 0 20px #ff0055;
+z-index:999;
+}
+
+#toast.show{
+opacity:1;
+}
+
+.footer{
+margin-top:25px;
+color:#555;
+font-size:12px;
+text-align:center;
+}
+
+@media(max-width:900px){
+.sidebar{
+width:80px;
+}
+
+.logo{
+font-size:16px;
+}
+
+.menu a{
+justify-content:center;
+font-size:12px;
+}
+
+.main{
+margin-left:80px;
+}
+
+.section{
+grid-template-columns:1fr;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+<div class="logo">SXR</div>
+
+<div class="menu">
+<a href="#" class="active">🏠 Dashboard</a>
+<a href="#">👤 Users</a>
+<a href="#">🔑 Keys</a>
+<a href="#">📥 Presets</a>
+<a href="#">⚙ Settings</a>
+</div>
+</div>
+
+<div class="main">
+
+<div class="topbar">
+<div class="title">
+<h1>SXR CONTROL PANEL</h1>
+<p>Firebase Realtime Admin System</p>
+</div>
+
+<div class="admin-box">
+ADMIN SXR
+</div>
+</div>
+
+<div class="stats">
+<div class="card">
+<div class="icon">👥</div>
+<h2 id="totalUsers">0</h2>
+<p>Total Users</p>
+</div>
+
+<div class="card">
+<div class="icon">💎</div>
+<h2 id="premiumUsers">0</h2>
+<p>Premium Users</p>
+</div>
+
+<div class="card">
+<div class="icon">🟢</div>
+<h2 id="onlineUsers">0</h2>
+<p>Online Users</p>
+</div>
+
+<div class="card">
+<div class="icon">🔑</div>
+<h2 id="totalKeys">0</h2>
+<p>Total Keys</p>
+</div>
+</div>
+
+<div class="section">
+
+<div class="panel">
+<h3>User Management</h3>
+
+<input type="text" id="searchUser" placeholder="Cari user..." onkeyup="searchUser()">
+
+<table id="userTable">
+<tr>
+<th>Username</th>
+<th>Status</th>
+<th>Plan</th>
+<th>Action</th>
+</tr>
+</table>
+</div>
+
+<div>
+
+<div class="panel">
+<h3>Generate Key</h3>
+
+<input type="text" id="keyInput" placeholder="Key muncul di sini">
+
+<button onclick="generateKey()">GENERATE KEY</button>
+<button onclick="copyKey()">COPY KEY</button>
+</div>
+
+<div class="panel" style="margin-top:20px;">
+<h3>Add User</h3>
+
+<input type="text" id="newUsername" placeholder="Username">
+
+<select id="newStatus">
+<option value="Online">Online</option>
+<option value="Offline">Offline</option>
+</select>
+
+<select id="newPlan">
+<option value="Free">Free</option>
+<option value="Premium">Premium</option>
+</select>
+
+<button onclick="addUser()">ADD USER</button>
+</div>
+
+</div>
+
+</div>
+
+<div class="footer">
+SXR Admin Panel v1.0 © 2026
+</div>
+
+</div>
+
+<div id="toast"></div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+import {
+  getDatabase,
+  ref,
+  push,
+  set,
+  onValue,
+  update,
+  remove
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyB_wIQfm_oVu5eoq4KVX9YXGk5cnHe0P8g",
+  authDomain: "corvus-5a5d1.firebaseapp.com",
+  databaseURL: "https://corvus-5a5d1-default-rtdb.firebaseio.com",
+  projectId: "corvus-5a5d1",
+  storageBucket: "corvus-5a5d1.firebasestorage.app",
+  messagingSenderId: "654809676016",
+  appId: "1:654809676016:web:adminsxr"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+window.generateKey = function(){
+  let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  let key = "SXR-";
+
+  for(let i = 0; i < 14; i++){
+    key += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+
+  document.getElementById("keyInput").value = key;
+
+  const keyRef = push(ref(db, "keys"));
+
+  set(keyRef, {
+    key: key,
+    status: "active",
+    createdAt: Date.now()
+  });
+
+  showToast("Key berhasil dibuat!");
+};
+
+window.copyKey = function(){
+  let key = document.getElementById("keyInput").value;
+
+  if(key === ""){
+    showToast("Generate key dulu!");
+    return;
+  }
+
+  navigator.clipboard.writeText(key);
+  showToast("Key berhasil dicopy!");
+};
+
+window.addUser = function(){
+  let username = document.getElementById("newUsername").value;
+  let status = document.getElementById("newStatus").value;
+  let plan = document.getElementById("newPlan").value;
+
+  if(username === ""){
+    showToast("Username wajib diisi!");
+    return;
+  }
+
+  const userRef = push(ref(db, "users"));
+
+  set(userRef, {
+    username: username,
+    status: status,
+    plan: plan,
+    createdAt: Date.now()
+  });
+
+  document.getElementById("newUsername").value = "";
+
+  showToast("User berhasil ditambahkan!");
+};
+
+function loadUsers(){
+  const userRef = ref(db, "users");
+
+  onValue(userRef, (snapshot) => {
+    const table = document.getElementById("userTable");
+
+    table.innerHTML = `
+      <tr>
+        <th>Username</th>
+        <th>Status</th>
+        <th>Plan</th>
+        <th>Action</th>
+      </tr>
+    `;
+
+    let total = 0;
+    let premium = 0;
+    let online = 0;
+
+    snapshot.forEach((child) => {
+      const id = child.key;
+      const user = child.val();
+
+      total++;
+
+      if(user.plan === "Premium"){
+        premium++;
+      }
+
+      if(user.status === "Online"){
+        online++;
+      }
+
+      let badgeClass = "badge-offline";
+
+      if(user.status === "Online"){
+        badgeClass = "badge-online";
+      }
+
+      if(user.status === "Banned"){
+        badgeClass = "badge-banned";
+      }
+
+      table.innerHTML += `
+        <tr>
+          <td>${user.username}</td>
+          <td>
+            <span class="${badgeClass}">
+              ${user.status}
+            </span>
+          </td>
+          <td>${user.plan}</td>
+          <td>
+            <button class="btn-ban" onclick="banUser('${id}')">BAN</button>
+            <button class="btn-delete" onclick="deleteUser('${id}')">DELETE</button>
+          </td>
+        </tr>
+      `;
+    });
+
+    document.getElementById("totalUsers").innerText = total;
+    document.getElementById("premiumUsers").innerText = premium;
+    document.getElementById("onlineUsers").innerText = online;
+  });
+}
+
+function loadKeys(){
+  const keyRef = ref(db, "keys");
+
+  onValue(keyRef, (snapshot) => {
+    let total = 0;
+
+    snapshot.forEach(() => {
+      total++;
+    });
+
+    document.getElementById("totalKeys").innerText = total;
+  });
+}
+
+window.banUser = function(id){
+  update(ref(db, "users/" + id), {
+    status: "Banned"
+  });
+
+  showToast("User berhasil dibanned!");
+};
+
+window.deleteUser = function(id){
+  remove(ref(db, "users/" + id));
+
+  showToast("User berhasil dihapus!");
+};
+
+window.searchUser = function(){
+  let input = document.getElementById("searchUser").value.toLowerCase();
+  let table = document.getElementById("userTable");
+  let tr = table.getElementsByTagName("tr");
+
+  for(let i = 1; i < tr.length; i++){
+    let td = tr[i].getElementsByTagName("td")[0];
+
+    if(td){
+      let txt = td.textContent || td.innerText;
+
+      tr[i].style.display =
+      txt.toLowerCase().includes(input) ? "" : "none";
+    }
+  }
+};
+
+function showToast(text){
+  let toast = document.getElementById("toast");
+
+  toast.innerHTML = text;
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2000);
+}
+
+loadUsers();
+loadKeys();
+</script>
+
+</body>
+</html>
