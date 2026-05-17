@@ -9,933 +9,848 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
 }
 
 body{
-background:#050505;
-color:white;
-display:flex;
-overflow-x:hidden;
+  background:#050505;
+  color:white;
+  display:flex;
+  overflow-x:hidden;
 }
 
 body::before{
-content:'';
-position:fixed;
-width:400px;
-height:400px;
-background:#ff0055;
-filter:blur(180px);
-opacity:.15;
-top:-100px;
-right:-100px;
-z-index:-1;
+  content:'';
+  position:fixed;
+  width:400px;
+  height:400px;
+  background:#ff0055;
+  filter:blur(180px);
+  opacity:.15;
+  top:-100px;
+  right:-100px;
+  z-index:-1;
 }
 
-/* SIDEBAR */
-
 .sidebar{
-width:240px;
-height:100vh;
-background:linear-gradient(180deg,#0d0d0d,#111);
-padding:20px;
-position:fixed;
-left:0;
-top:0;
-border-right:1px solid rgba(255,255,255,0.05);
+  width:240px;
+  height:100vh;
+  background:linear-gradient(180deg,#0d0d0d,#111);
+  padding:20px;
+  position:fixed;
+  left:0;
+  top:0;
+  border-right:1px solid rgba(255,255,255,.05);
 }
 
 .logo{
-font-size:24px;
-font-weight:700;
-color:#ff0055;
-text-align:center;
-margin-bottom:35px;
-text-shadow:0 0 15px #ff0055;
+  font-size:26px;
+  font-weight:700;
+  color:#ff0055;
+  text-align:center;
+  margin-bottom:35px;
+  text-shadow:0 0 15px #ff0055;
 }
 
 .menu a{
-display:flex;
-align-items:center;
-padding:14px;
-margin-top:10px;
-border-radius:16px;
-text-decoration:none;
-color:#ccc;
-transition:0.3s;
-background:rgba(255,255,255,0.03);
-font-size:18px;
+  display:flex;
+  align-items:center;
+  padding:14px;
+  margin-top:10px;
+  border-radius:16px;
+  text-decoration:none;
+  color:#ccc;
+  transition:.3s;
+  background:rgba(255,255,255,.03);
+  font-size:17px;
 }
 
 .menu a:hover,
 .menu a.active{
-background:#ff0055;
-color:white;
-transform:translateX(5px);
-box-shadow:0 0 25px #ff0055;
+  background:#ff0055;
+  color:white;
+  transform:translateX(5px);
+  box-shadow:0 0 25px #ff0055;
 }
-
-/* MAIN */
 
 .main{
-margin-left:240px;
-width:100%;
-padding:20px;
+  margin-left:240px;
+  width:100%;
+  padding:20px;
 }
 
-/* TOPBAR */
-
 .topbar{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:25px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:25px;
 }
 
 .title h1{
-font-size:30px;
-color:#ff0055;
+  font-size:30px;
+  color:#ff0055;
 }
 
 .title p{
-color:#888;
-font-size:13px;
+  color:#888;
+  font-size:13px;
 }
 
 .admin-box{
-background:#111;
-padding:12px 18px;
-border-radius:14px;
-box-shadow:0 0 10px rgba(255,0,85,0.2);
+  background:#111;
+  padding:12px 18px;
+  border-radius:14px;
+  box-shadow:0 0 10px rgba(255,0,85,.2);
 }
 
-/* PAGE */
-
 .page{
-animation:fade .3s ease;
+  animation:fade .3s ease;
 }
 
 @keyframes fade{
-from{
-opacity:0;
-transform:translateY(10px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
+  from{
+    opacity:0;
+    transform:translateY(10px);
+  }
 
-/* CARD */
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
 
 .stats{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:18px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
 }
 
 .card{
-background:linear-gradient(145deg,#111,#161616);
-padding:22px;
-border-radius:20px;
-position:relative;
-overflow:hidden;
-transition:0.3s;
+  background:linear-gradient(145deg,#111,#161616);
+  padding:22px;
+  border-radius:20px;
+  position:relative;
+  overflow:hidden;
+  transition:.3s;
 }
 
 .card:hover{
-transform:translateY(-5px);
-box-shadow:0 0 20px rgba(255,0,85,0.4);
+  transform:translateY(-5px);
+  box-shadow:0 0 20px rgba(255,0,85,.4);
 }
 
 .card::before{
-content:'';
-position:absolute;
-width:120px;
-height:120px;
-background:#ff0055;
-border-radius:50%;
-top:-40px;
-right:-40px;
-opacity:0.15;
+  content:'';
+  position:absolute;
+  width:120px;
+  height:120px;
+  background:#ff0055;
+  border-radius:50%;
+  top:-40px;
+  right:-40px;
+  opacity:.15;
 }
 
 .card .icon{
-font-size:30px;
+  font-size:30px;
 }
 
 .card h2{
-font-size:32px;
-color:#ff0055;
-margin-top:10px;
+  font-size:32px;
+  color:#ff0055;
+  margin-top:10px;
 }
 
 .card p{
-margin-top:8px;
-color:#999;
+  margin-top:8px;
+  color:#999;
 }
 
-/* PANEL */
-
 .panel{
-background:#111;
-padding:20px;
-border-radius:20px;
-margin-top:20px;
+  background:#111;
+  padding:20px;
+  border-radius:20px;
+  margin-top:20px;
 }
 
 .panel h3{
-margin-bottom:15px;
+  margin-bottom:15px;
 }
 
-/* TABLE */
-
 table{
-width:100%;
-border-collapse:collapse;
+  width:100%;
+  border-collapse:collapse;
 }
 
 table th{
-padding:14px;
-text-align:left;
-color:#ff0055;
+  padding:14px;
+  text-align:left;
+  color:#ff0055;
 }
 
 table td{
-padding:14px;
-border-top:1px solid rgba(255,255,255,.05);
+  padding:14px;
+  border-top:1px solid rgba(255,255,255,.05);
+  font-size:13px;
+  color:#ccc;
 }
 
-/* BADGES */
-
-.badge-online{
-background:rgba(0,255,153,.15);
-color:#00ff99;
-padding:5px 10px;
-border-radius:20px;
+.badge-online,
+.badge-active,
+.badge-unused{
+  background:rgba(0,255,153,.15);
+  color:#00ff99;
+  padding:5px 10px;
+  border-radius:20px;
 }
 
 .badge-offline{
-background:rgba(255,255,255,.08);
-color:#aaa;
-padding:5px 10px;
-border-radius:20px;
+  background:rgba(255,255,255,.08);
+  color:#aaa;
+  padding:5px 10px;
+  border-radius:20px;
 }
 
-.badge-banned{
-background:rgba(255,0,0,.15);
-color:#ff4d4d;
-padding:5px 10px;
-border-radius:20px;
-}
-
-.badge-active{
-background:rgba(0,255,153,.15);
-color:#00ff99;
-padding:5px 10px;
-border-radius:20px;
-}
-
+.badge-banned,
 .badge-expired{
-background:rgba(255,0,0,.15);
-color:#ff4d4d;
-padding:5px 10px;
-border-radius:20px;
+  background:rgba(255,0,0,.15);
+  color:#ff4d4d;
+  padding:5px 10px;
+  border-radius:20px;
 }
 
-/* INPUT */
+.badge-used{
+  background:rgba(255,170,0,.15);
+  color:#ffaa00;
+  padding:5px 10px;
+  border-radius:20px;
+}
 
 input,
 select{
-width:100%;
-padding:14px;
-border:none;
-border-radius:14px;
-margin-top:10px;
-background:#1a1a1a;
-color:white;
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:14px;
+  margin-top:10px;
+  background:#1a1a1a;
+  color:white;
 }
 
-/* BUTTON */
-
 button{
-width:100%;
-padding:14px;
-border:none;
-border-radius:14px;
-margin-top:12px;
-background:linear-gradient(45deg,#ff0055,#ff3d7a);
-color:white;
-font-weight:600;
-cursor:pointer;
-transition:.3s;
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:14px;
+  margin-top:12px;
+  background:linear-gradient(45deg,#ff0055,#ff3d7a);
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+  transition:.3s;
 }
 
 button:hover{
-box-shadow:0 0 15px #ff0055;
+  box-shadow:0 0 15px #ff0055;
 }
 
 .btn-ban{
-background:red;
-margin-top:0;
+  background:red;
+  margin-top:0;
 }
 
 .btn-delete{
-background:#444;
-margin-top:6px;
+  background:#444;
+  margin-top:6px;
 }
 
-/* TOAST */
-
 #toast{
-position:fixed;
-bottom:25px;
-right:25px;
-background:#ff0055;
-padding:14px 20px;
-border-radius:12px;
-opacity:0;
-transition:.3s;
-box-shadow:0 0 20px #ff0055;
-z-index:999;
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  background:#ff0055;
+  padding:14px 20px;
+  border-radius:12px;
+  opacity:0;
+  transition:.3s;
+  box-shadow:0 0 20px #ff0055;
+  z-index:999;
 }
 
 #toast.show{
-opacity:1;
+  opacity:1;
 }
-
-/* MOBILE */
 
 @media(max-width:900px){
+  .sidebar{
+    width:80px;
+  }
 
-.sidebar{
-width:80px;
+  .logo{
+    font-size:16px;
+  }
+
+  .menu a{
+    justify-content:center;
+    font-size:12px;
+  }
+
+  .main{
+    margin-left:80px;
+  }
 }
-
-.logo{
-font-size:16px;
-}
-
-.menu a{
-justify-content:center;
-font-size:12px;
-}
-
-.main{
-margin-left:80px;
-}
-
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- SIDEBAR -->
-
 <div class="sidebar">
 
-<div class="logo">
-SXR
-</div>
+  <div class="logo">SXR</div>
 
-<div class="menu">
-<a href="#" class="active" onclick="showPage('dashboard', this)">🏠 Dashboard</a>
-<a href="#" onclick="showPage('users', this)">👤 Users</a>
-<a href="#" onclick="showPage('keys', this)">🔑 Keys</a>
-<a href="#" onclick="showPage('presets', this)">📥 Presets</a>
-<a href="#" onclick="showPage('settings', this)">⚙ Settings</a>
-</div>
+  <div class="menu">
+    <a href="#" class="active" onclick="showPage('dashboard', this)">🏠 Dashboard</a>
+    <a href="#" onclick="showPage('users', this)">👤 Users</a>
+    <a href="#" onclick="showPage('keys', this)">🔑 Keys</a>
+    <a href="#" onclick="showPage('redeem', this)">✅ Redeem</a>
+    <a href="#" onclick="showPage('settings', this)">⚙ Settings</a>
+  </div>
 
 </div>
-
-<!-- MAIN -->
 
 <div class="main">
 
-<div class="topbar">
+  <div class="topbar">
 
-<div class="title">
-<h1>SXR CONTROL PANEL</h1>
-<p>Realtime Firebase Dashboard</p>
-</div>
+    <div class="title">
+      <h1>SXR CONTROL PANEL</h1>
+      <p>Firebase Realtime Dashboard</p>
+    </div>
 
-<div class="admin-box">
-ADMIN SXR
-</div>
+    <div class="admin-box">ADMIN SXR</div>
 
-</div>
+  </div>
 
-<!-- DASHBOARD -->
+  <div id="dashboard" class="page">
 
-<div id="dashboard" class="page">
+    <div class="stats">
 
-<div class="stats">
+      <div class="card">
+        <div class="icon">👥</div>
+        <h2 id="totalUsers">0</h2>
+        <p>Total Users</p>
+      </div>
 
-<div class="card">
-<div class="icon">👥</div>
-<h2 id="totalUsers">0</h2>
-<p>Total Users</p>
-</div>
+      <div class="card">
+        <div class="icon">💎</div>
+        <h2 id="premiumUsers">0</h2>
+        <p>Premium Users</p>
+      </div>
 
-<div class="card">
-<div class="icon">💎</div>
-<h2 id="premiumUsers">0</h2>
-<p>Premium Users</p>
-</div>
+      <div class="card">
+        <div class="icon">🟢</div>
+        <h2 id="onlineUsers">0</h2>
+        <p>Online Users</p>
+      </div>
 
-<div class="card">
-<div class="icon">🟢</div>
-<h2 id="onlineUsers">0</h2>
-<p>Online Users</p>
-</div>
+      <div class="card">
+        <div class="icon">🔑</div>
+        <h2 id="totalKeys">0</h2>
+        <p>Total Keys</p>
+      </div>
 
-<div class="card">
-<div class="icon">🔑</div>
-<h2 id="totalKeys">0</h2>
-<p>Total Keys</p>
-</div>
+    </div>
 
-</div>
+  </div>
 
-</div>
+  <div id="users" class="page" style="display:none;">
 
-<!-- USERS -->
+    <div class="panel">
 
-<div id="users" class="page" style="display:none;">
+      <h3>User Management</h3>
 
-<div class="panel">
+      <input type="text" id="searchUser" placeholder="Cari user..." onkeyup="searchUser()">
 
-<h3>User Management</h3>
+      <table id="userTable">
+        <tr>
+          <th>Username</th>
+          <th>Status</th>
+          <th>Plan</th>
+          <th>Action</th>
+        </tr>
+      </table>
 
-<input
-type="text"
-id="searchUser"
-placeholder="Cari user..."
-onkeyup="searchUser()">
+    </div>
 
-<table id="userTable">
+    <div class="panel">
 
-<tr>
-<th>Username</th>
-<th>Status</th>
-<th>Plan</th>
-<th>Action</th>
-</tr>
+      <h3>Add User</h3>
 
-</table>
+      <input type="text" id="newUsername" placeholder="Username">
 
-</div>
+      <select id="newStatus">
+        <option value="Online">Online</option>
+        <option value="Offline">Offline</option>
+      </select>
 
-<div class="panel">
+      <select id="newPlan">
+        <option value="Free">Free</option>
+        <option value="Premium">Premium</option>
+      </select>
 
-<h3>Add User</h3>
+      <button onclick="addUser()">ADD USER</button>
 
-<input type="text" id="newUsername" placeholder="Username">
+    </div>
 
-<select id="newStatus">
-<option value="Online">Online</option>
-<option value="Offline">Offline</option>
-</select>
+  </div>
 
-<select id="newPlan">
-<option value="Free">Free</option>
-<option value="Premium">Premium</option>
-</select>
+  <div id="keys" class="page" style="display:none;">
 
-<button onclick="addUser()">
-ADD USER
-</button>
+    <div class="panel">
 
-</div>
+      <h3>Generate Key</h3>
 
-</div>
+      <input type="text" id="keyInput" placeholder="Key muncul di sini">
 
-<!-- KEYS -->
+      <select id="expDays">
+        <option value="1">EXP 1 Hari</option>
+        <option value="7">EXP 7 Hari</option>
+        <option value="30">EXP 30 Hari</option>
+      </select>
 
-<div id="keys" class="page" style="display:none;">
+      <button onclick="generateKey()">GENERATE KEY</button>
+      <button onclick="copyKey()">COPY KEY</button>
 
-<div class="panel">
+    </div>
 
-<h3>Generate Key</h3>
+    <div class="panel">
 
-<input type="text" id="keyInput" placeholder="Key muncul di sini">
+      <h3>Recent Keys</h3>
 
-<select id="expDays">
-<option value="1">EXP 1 Hari</option>
-<option value="7">EXP 7 Hari</option>
-<option value="30">EXP 30 Hari</option>
-</select>
+      <input type="text" id="searchKey" placeholder="Cari key..." onkeyup="searchKey()">
 
-<button onclick="generateKey()">
-GENERATE KEY
-</button>
+      <table id="keyTable">
+        <tr>
+          <th>Key</th>
+          <th>EXP</th>
+          <th>Status</th>
+          <th>Device</th>
+          <th>Action</th>
+        </tr>
+      </table>
 
-<button onclick="copyKey()">
-COPY KEY
-</button>
+    </div>
 
-</div>
+  </div>
 
-<div class="panel">
+  <div id="redeem" class="page" style="display:none;">
 
-<h3>Recent Keys</h3>
+    <div class="panel">
 
-<table id="keyTable">
+      <h3>Redeem Key Test</h3>
 
-<tr>
-<th>Key</th>
-<th>EXP</th>
-<th>Status</th>
-</tr>
+      <input type="text" id="redeemUsername" placeholder="Username">
+      <input type="text" id="redeemDevice" placeholder="Device ID / HWID">
+      <input type="text" id="redeemKey" placeholder="Masukkan Key">
 
-</table>
+      <button onclick="redeemKey()">REDEEM KEY</button>
 
-</div>
+    </div>
 
-</div>
+  </div>
 
-<!-- PRESETS -->
+  <div id="settings" class="page" style="display:none;">
 
-<div id="presets" class="page" style="display:none;">
+    <div class="panel">
 
-<div class="panel">
-<h3>Presets</h3>
+      <h3>Settings</h3>
 
-<p style="color:#888;">
-Coming Soon...
-</p>
-</div>
+      <p style="color:#888;">Admin settings panel.</p>
+
+    </div>
+
+  </div>
 
 </div>
-
-<!-- SETTINGS -->
-
-<div id="settings" class="page" style="display:none;">
-
-<div class="panel">
-<h3>Settings</h3>
-
-<p style="color:#888;">
-Admin settings panel.
-</p>
-</div>
-
-</div>
-
-</div>
-
-<!-- TOAST -->
 
 <div id="toast"></div>
 
 <script type="module">
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
 
 import {
-getDatabase,
-ref,
-push,
-set,
-onValue,
-update,
-remove
+  getDatabase,
+  ref,
+  push,
+  set,
+  onValue,
+  update,
+  remove
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-database.js";
 
-/* FIREBASE */
-
 const firebaseConfig = {
-apiKey: "AIzaSyCJKWXuZMMTdIZg1Z5eXk9FG-KdCNUItWw",
-authDomain: "skytol-11b7c.firebaseapp.com",
-databaseURL: "https://skytol-11b7c-default-rtdb.firebaseio.com",
-projectId: "skytol-11b7c",
-storageBucket: "skytol-11b7c.firebasestorage.app",
-messagingSenderId: "1091949783390",
-appId: "1:1091949783390:web:sxradmin"
+  apiKey: "AIzaSyCJKWXuZMMTdIZg1Z5eXk9FG-KdCNUItWw",
+  authDomain: "skytol-11b7c.firebaseapp.com",
+  databaseURL: "https://skytol-11b7c-default-rtdb.firebaseio.com",
+  projectId: "skytol-11b7c",
+  storageBucket: "skytol-11b7c.firebasestorage.app",
+  messagingSenderId: "1091949783390",
+  appId: "1:1091949783390:web:sxradmin"
 };
 
 const app = initializeApp(firebaseConfig);
-
 const db = getDatabase(app);
 
-/* SIDEBAR PAGE */
-
 window.showPage = function(pageId, element){
+  document.querySelectorAll(".page").forEach((page) => {
+    page.style.display = "none";
+  });
 
-let pages =
-document.querySelectorAll(".page");
+  document.getElementById(pageId).style.display = "block";
 
-pages.forEach((page)=>{
-page.style.display = "none";
-});
+  document.querySelectorAll(".menu a").forEach((menu) => {
+    menu.classList.remove("active");
+  });
 
-document.getElementById(pageId).style.display = "block";
-
-let menus =
-document.querySelectorAll(".menu a");
-
-menus.forEach((menu)=>{
-menu.classList.remove("active");
-});
-
-element.classList.add("active");
-
-}
-
-/* TOAST */
+  element.classList.add("active");
+};
 
 function showToast(text){
+  const toast = document.getElementById("toast");
 
-let toast =
-document.getElementById("toast");
+  toast.innerHTML = text;
+  toast.classList.add("show");
 
-toast.innerHTML = text;
-
-toast.classList.add("show");
-
-setTimeout(()=>{
-toast.classList.remove("show");
-},2000);
-
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2000);
 }
-
-/* ADD USER */
 
 window.addUser = function(){
+  const username = document.getElementById("newUsername").value;
+  const status = document.getElementById("newStatus").value;
+  const plan = document.getElementById("newPlan").value;
 
-let username =
-document.getElementById("newUsername").value;
+  if(username === ""){
+    showToast("Username wajib diisi!");
+    return;
+  }
 
-let status =
-document.getElementById("newStatus").value;
+  const userRef = push(ref(db, "Login"));
 
-let plan =
-document.getElementById("newPlan").value;
+  set(userRef, {
+    username: username,
+    status: status,
+    plan: plan,
+    deviceId: "",
+    createdAt: Date.now()
+  });
 
-if(username === ""){
-showToast("Username wajib diisi!");
-return;
-}
+  document.getElementById("newUsername").value = "";
 
-const userRef =
-push(ref(db,"Login"));
-
-set(userRef,{
-username:username,
-status:status,
-plan:plan,
-createdAt:Date.now()
-});
-
-document.getElementById("newUsername").value = "";
-
-showToast("User berhasil ditambahkan!");
-
-}
-
-/* LOAD USERS */
+  showToast("User berhasil ditambahkan!");
+};
 
 function loadUsers(){
+  const userRef = ref(db, "Login");
 
-const userRef =
-ref(db,"Login");
+  onValue(userRef, (snapshot) => {
+    const table = document.getElementById("userTable");
 
-onValue(userRef,(snapshot)=>{
+    table.innerHTML = `
+      <tr>
+        <th>Username</th>
+        <th>Status</th>
+        <th>Plan</th>
+        <th>Action</th>
+      </tr>
+    `;
 
-const table =
-document.getElementById("userTable");
+    let total = 0;
+    let premium = 0;
+    let online = 0;
 
-table.innerHTML = `
-<tr>
-<th>Username</th>
-<th>Status</th>
-<th>Plan</th>
-<th>Action</th>
-</tr>
-`;
+    snapshot.forEach((child) => {
+      const id = child.key;
+      const user = child.val();
 
-let total = 0;
-let premium = 0;
-let online = 0;
+      total++;
 
-snapshot.forEach((child)=>{
+      const username = user.username || user.user || user.email || "No Name";
+      const status = user.status || "Offline";
+      const plan = user.plan || "Free";
 
-const id = child.key;
-const user = child.val();
+      if(plan === "Premium"){
+        premium++;
+      }
 
-total++;
+      if(status === "Online"){
+        online++;
+      }
 
-let username =
-user.username ||
-user.user ||
-user.email ||
-"No Name";
+      let badgeClass = "badge-offline";
 
-let status =
-user.status || "Offline";
+      if(status === "Online"){
+        badgeClass = "badge-online";
+      }
 
-let plan =
-user.plan || "Free";
+      if(status === "Banned"){
+        badgeClass = "badge-banned";
+      }
 
-if(plan === "Premium"){
-premium++;
+      table.innerHTML += `
+        <tr>
+          <td>${username}</td>
+          <td>
+            <span class="${badgeClass}">
+              ${status}
+            </span>
+          </td>
+          <td>${plan}</td>
+          <td>
+            <button class="btn-ban" onclick="banUser('${id}')">BAN</button>
+            <button class="btn-delete" onclick="deleteUser('${id}')">DELETE</button>
+          </td>
+        </tr>
+      `;
+    });
+
+    document.getElementById("totalUsers").innerText = total;
+    document.getElementById("premiumUsers").innerText = premium;
+    document.getElementById("onlineUsers").innerText = online;
+  });
 }
-
-if(status === "Online"){
-online++;
-}
-
-let badgeClass =
-"badge-offline";
-
-if(status === "Online"){
-badgeClass = "badge-online";
-}
-
-if(status === "Banned"){
-badgeClass = "badge-banned";
-}
-
-table.innerHTML += `
-<tr>
-<td>${username}</td>
-
-<td>
-<span class="${badgeClass}">
-${status}
-</span>
-</td>
-
-<td>${plan}</td>
-
-<td>
-<button class="btn-ban"
-onclick="banUser('${id}')">
-BAN
-</button>
-
-<button class="btn-delete"
-onclick="deleteUser('${id}')">
-DELETE
-</button>
-</td>
-
-</tr>
-`;
-
-});
-
-document.getElementById("totalUsers").innerText = total;
-document.getElementById("premiumUsers").innerText = premium;
-document.getElementById("onlineUsers").innerText = online;
-
-});
-
-}
-
-/* BAN USER */
 
 window.banUser = function(id){
+  update(ref(db, "Login/" + id), {
+    status: "Banned"
+  });
 
-update(ref(db,"Login/" + id),{
-status:"Banned"
-});
-
-showToast("User dibanned!");
-
-}
-
-/* DELETE USER */
+  showToast("User berhasil dibanned!");
+};
 
 window.deleteUser = function(id){
+  remove(ref(db, "Login/" + id));
 
-remove(ref(db,"Login/" + id));
-
-showToast("User dihapus!");
-
-}
-
-/* SEARCH USER */
+  showToast("User berhasil dihapus!");
+};
 
 window.searchUser = function(){
+  const input = document.getElementById("searchUser").value.toLowerCase();
+  const table = document.getElementById("userTable");
+  const tr = table.getElementsByTagName("tr");
 
-let input =
-document.getElementById("searchUser")
-.value.toLowerCase();
+  for(let i = 1; i < tr.length; i++){
+    const td = tr[i].getElementsByTagName("td")[0];
 
-let table =
-document.getElementById("userTable");
-
-let tr =
-table.getElementsByTagName("tr");
-
-for(let i=1;i<tr.length;i++){
-
-let td =
-tr[i].getElementsByTagName("td")[0];
-
-if(td){
-
-let txt =
-td.textContent || td.innerText;
-
-tr[i].style.display =
-txt.toLowerCase().includes(input)
-? ""
-: "none";
-
-}
-
-}
-
-}
-
-/* GENERATE KEY */
+    if(td){
+      const txt = td.textContent || td.innerText;
+      tr[i].style.display = txt.toLowerCase().includes(input) ? "" : "none";
+    }
+  }
+};
 
 window.generateKey = function(){
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  let key = "SXR-";
 
-let chars =
-"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  for(let i = 0; i < 14; i++){
+    key += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
 
-let key = "SXR-";
+  const days = parseInt(document.getElementById("expDays").value);
+  const now = Date.now();
+  const expiredAt = now + (days * 24 * 60 * 60 * 1000);
 
-for(let i=0;i<14;i++){
+  document.getElementById("keyInput").value = key;
 
-key += chars.charAt(
-Math.floor(Math.random()*chars.length)
-);
+  const keyRef = push(ref(db, "keys"));
 
-}
+  set(keyRef, {
+    key: key,
+    status: "unused",
+    expDays: days,
+    createdAt: now,
+    expiredAt: expiredAt,
+    usedBy: "",
+    deviceId: ""
+  });
 
-let days =
-parseInt(
-document.getElementById("expDays").value
-);
-
-let now = Date.now();
-
-let expiredAt =
-now + (days * 24 * 60 * 60 * 1000);
-
-document.getElementById("keyInput").value = key;
-
-const keyRef =
-push(ref(db,"keys"));
-
-set(keyRef,{
-key:key,
-status:"active",
-expDays:days,
-createdAt:now,
-expiredAt:expiredAt
-});
-
-showToast("Key berhasil dibuat!");
-
-}
-
-/* COPY KEY */
+  showToast("Key berhasil dibuat!");
+};
 
 window.copyKey = function(){
+  const key = document.getElementById("keyInput").value;
 
-let key =
-document.getElementById("keyInput").value;
+  if(key === ""){
+    showToast("Generate key dulu!");
+    return;
+  }
 
-if(key === ""){
-showToast("Generate key dulu!");
-return;
-}
+  navigator.clipboard.writeText(key);
 
-navigator.clipboard.writeText(key);
-
-showToast("Key berhasil dicopy!");
-
-}
-
-/* LOAD KEYS */
+  showToast("Key berhasil dicopy!");
+};
 
 function loadKeys(){
+  const keyRef = ref(db, "keys");
 
-const keyRef =
-ref(db,"keys");
+  onValue(keyRef, (snapshot) => {
+    const table = document.getElementById("keyTable");
 
-onValue(keyRef,(snapshot)=>{
+    table.innerHTML = `
+      <tr>
+        <th>Key</th>
+        <th>EXP</th>
+        <th>Status</th>
+        <th>Device</th>
+        <th>Action</th>
+      </tr>
+    `;
 
-const table =
-document.getElementById("keyTable");
+    let total = 0;
 
-table.innerHTML = `
-<tr>
-<th>Key</th>
-<th>EXP</th>
-<th>Status</th>
-</tr>
-`;
+    snapshot.forEach((child) => {
+      const id = child.key;
+      const data = child.val();
 
-let total = 0;
+      total++;
 
-snapshot.forEach((child)=>{
+      if(data.expiredAt && Date.now() > data.expiredAt && data.status !== "expired"){
+        update(ref(db, "keys/" + id), {
+          status: "expired"
+        });
+      }
 
-const id = child.key;
-const data = child.val();
+      let status = data.status || "unused";
 
-total++;
+      if(data.expiredAt && Date.now() > data.expiredAt){
+        status = "expired";
+      }
 
-if(
-Date.now() > data.expiredAt &&
-data.status !== "expired"
-){
+      let badgeClass = "badge-unused";
 
-update(ref(db,"keys/" + id),{
-status:"expired"
-});
+      if(status === "used"){
+        badgeClass = "badge-used";
+      }
 
+      if(status === "expired"){
+        badgeClass = "badge-expired";
+      }
+
+      table.innerHTML += `
+        <tr>
+          <td>${data.key}</td>
+          <td>${data.expDays || 0} Hari</td>
+          <td>
+            <span class="${badgeClass}">
+              ${status}
+            </span>
+          </td>
+          <td>${data.deviceId || "-"}</td>
+          <td>
+            <button class="btn-delete" onclick="deleteKey('${id}')">DELETE</button>
+          </td>
+        </tr>
+      `;
+    });
+
+    document.getElementById("totalKeys").innerText = total;
+  });
 }
 
-let status =
-Date.now() > data.expiredAt
-? "expired"
-: "active";
+window.deleteKey = function(id){
+  remove(ref(db, "keys/" + id));
 
-let badgeClass =
-status === "active"
-? "badge-active"
-: "badge-expired";
+  showToast("Key berhasil dihapus!");
+};
 
-table.innerHTML += `
-<tr>
+window.searchKey = function(){
+  const input = document.getElementById("searchKey").value.toLowerCase();
+  const table = document.getElementById("keyTable");
+  const tr = table.getElementsByTagName("tr");
 
-<td>${data.key}</td>
+  for(let i = 1; i < tr.length; i++){
+    const td = tr[i].getElementsByTagName("td")[0];
 
-<td>${data.expDays} Hari</td>
+    if(td){
+      const txt = td.textContent || td.innerText;
+      tr[i].style.display = txt.toLowerCase().includes(input) ? "" : "none";
+    }
+  }
+};
 
-<td>
-<span class="${badgeClass}">
-${status}
-</span>
-</td>
+window.redeemKey = function(){
+  const username = document.getElementById("redeemUsername").value;
+  const deviceId = document.getElementById("redeemDevice").value;
+  const inputKey = document.getElementById("redeemKey").value;
 
-</tr>
-`;
+  if(username === "" || deviceId === "" || inputKey === ""){
+    showToast("Isi semua data!");
+    return;
+  }
 
-});
+  const keyRef = ref(db, "keys");
 
-document.getElementById("totalKeys").innerText = total;
+  onValue(keyRef, (snapshot) => {
+    let found = false;
 
-});
+    snapshot.forEach((child) => {
+      const id = child.key;
+      const data = child.val();
 
-}
+      if(data.key === inputKey){
+        found = true;
+
+        if(Date.now() > data.expiredAt){
+          update(ref(db, "keys/" + id), {
+            status: "expired"
+          });
+
+          showToast("Key sudah expired!");
+          return;
+        }
+
+        if(data.status === "used" && data.deviceId !== deviceId){
+          showToast("Key sudah dipakai device lain!");
+          return;
+        }
+
+        update(ref(db, "keys/" + id), {
+          status: "used",
+          usedBy: username,
+          deviceId: deviceId,
+          redeemedAt: Date.now()
+        });
+
+        const userRef = push(ref(db, "Login"));
+
+        set(userRef, {
+          username: username,
+          status: "Online",
+          plan: "Premium",
+          deviceId: deviceId,
+          createdAt: Date.now()
+        });
+
+        showToast("Redeem berhasil!");
+      }
+    });
+
+    if(!found){
+      showToast("Key tidak ditemukan!");
+    }
+  }, {
+    onlyOnce:true
+  });
+};
 
 loadUsers();
 loadKeys();
-
 </script>
 
 </body>
